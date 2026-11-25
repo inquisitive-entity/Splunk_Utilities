@@ -1,0 +1,40 @@
+<dashboard version="1.1">
+  <!-- A title for the dashboard -->
+  <label>Datasources</label>
+  <!-- Provide a description -->
+  <description>The indexes and their sourcetypes aka Where does everything live?</description>
+  <row>
+    <panel>
+      <title>Live version</title>
+      <table>
+        <title>uses tstats, limiting to last 24hours</title>
+        <search>
+          <query>
+          | tstats values(sourcetype) as sourcetypes where (index=* OR index=_*) by index | eval sourcetypes=mvjoin(sourcetypes, " | ")
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <!-- <option name="rowNumbers">true</option> -->
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>KVStore version, when you don't need the freshest data</title>
+      <table>
+        <title>inputlookups a kvstore that is populated by a scheduled saved search</title>
+        <search>
+          <query>
+          | inputlookup datasources
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <!-- <option name="rowNumbers">true</option> -->
+      </table>
+    </panel>
+  </row>
+</dashboard>
