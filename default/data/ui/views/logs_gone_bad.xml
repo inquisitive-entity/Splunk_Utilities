@@ -1,0 +1,20 @@
+<dashboard version="1.1">
+  <label>Logs that are quiet, too quiet</label>
+  <description>When did I last see this?</description>
+  <row>
+    <panel>
+      <table>
+        <title>TODO: add queries/panels/savedsearches for log frequencey analysis (day of week, weekly, daily, deltas)</title>
+        <search>
+          <query>
+          | makeresults | eval msg="see title" | table msg
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <!-- <option name="rowNumbers">true</option> -->
+      </table>
+    </panel>
+  </row>
+</dashboard>
