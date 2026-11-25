@@ -1,0 +1,20 @@
+<dashboard version="1.1">
+  <label>License Usag</label>
+  <description>Basice License Usage stats when you don't want to open the Monitoring Console or can't</description>
+  <row>
+    <panel>
+      <table>
+        <title>TODO: add queries/panels/savedsearches for license usage trend, min/max/median/avg/mode/limit/days exceeded limit in last 30 days</title>
+        <search>
+          <query>
+          | makeresults | eval msg="see title" | table msg
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <!-- <option name="rowNumbers">true</option> -->
+      </table>
+    </panel>
+  </row>
+</dashboard>
