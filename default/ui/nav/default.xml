@@ -1,0 +1,6 @@
+<nav search_view="search">
+    <view name="search" />
+    <view name="reports" />
+    <view name="datasources" default="true" />
+    <view name="license_usage" />
+</nav>
